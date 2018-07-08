@@ -15,8 +15,8 @@
 
 ; Checks if square differs from radicand
 ; by less than a predetermined tolerance.
-(define (good-enough? guess x)
-  (< (abs (- (square guess) x)) 0.001))
+(define (good-enough? guess nextGuess)
+  (< (abs(- 1 (abs (/ guess nextGuess)))) 0.0001))
 
 ; Improves the guess by averaging it with the quotient
 ; Of the radicand and the old guess.
@@ -25,8 +25,8 @@
 
 ; Will check the square root by constantly improving a guess.
 (define (sqrt-iter guess x)
-  (if (good-enough? guess x)
-      guess
+  (if (good-enough? guess (improve guess x))
+      (improve guess x)
       (sqrt-iter (improve guess x) x)))
 
 (define (sqrt x)
