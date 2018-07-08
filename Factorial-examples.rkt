@@ -17,7 +17,7 @@
                  (+ counter 1)
                  max-count)))
 
-; The same iterative factorial procedure, but using a block structure.
+; The same iterative factorial process, but using a block structure.
 (define (factorial-iter-block n)
   (define (iter product counter)
     (if (> counter n)
@@ -25,3 +25,6 @@
         (iter (* counter product)
               (+ counter 1))))
   (iter 1 1))
+
+; They are both recursive procedures, however, only the first is a
+; Reursive process. The others are iterative processes.
