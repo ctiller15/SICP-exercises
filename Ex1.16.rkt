@@ -13,9 +13,6 @@
   (**-iter b n 1))
 
 (define (**-iter b n a)
-  (writeln a)
-  (writeln b)
-  (writeln n)
   (cond ((= n 1) a)
         ((even? n) (**-iter b (/ n 2) (* a (sq b))))
         ( else (**-iter b (- n 1) (* a b)))))
