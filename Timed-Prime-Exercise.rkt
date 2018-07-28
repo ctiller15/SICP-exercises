@@ -47,15 +47,16 @@
 (define (check-prime start end count time)
   (cond ((= count 0) "Done searching!")
         ((> start end) "Done searching!")
-        ((even? start)(check-prime (+ start 1) end count (current-inexact-milliseconds)))
+        ((even? start)(check-prime (+ start 1) end count time))
         ((prime? start) (handle-success start end (- count 1) (- (current-inexact-milliseconds) time)))
-        (else (check-prime (+ start 2) end count (current-inexact-milliseconds)))))
+        (else (check-prime (+ start 2) end count time))))
 
 (define (handle-success num end newCount time)
   (newline)
   (display num)
   (display " *** ")
   (display time)
+  
   (check-prime (+ num 2) end newCount (current-inexact-milliseconds)))
 
 (search-for-primes 1 11 3)
@@ -64,3 +65,8 @@
 (search-for-primes 100000 1000000 3)
 (search-for-primes 1000000 10000000 3)
 (search-for-primes 10000000 100000000 3)
+
+(search-for-primes 1000000000 10000000000 3)
+(search-for-primes 10000000000 100000000000 3)
+(search-for-primes 100000000000 1000000000000 3)
+(search-for-primes 1000000000000 10000000000000 3)
